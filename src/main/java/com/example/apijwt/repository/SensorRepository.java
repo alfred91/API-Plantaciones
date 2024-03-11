@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface SensorRepository extends JpaRepository<Sensor, Long> {
     List<Sensor> findByPlantacionId(Long plantacionId);
+
 }

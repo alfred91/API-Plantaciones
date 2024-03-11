@@ -1,5 +1,6 @@
 package com.example.apijwt.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +19,6 @@ public class Registro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaHora;
 
     private Double temperatura;
@@ -27,5 +27,6 @@ public class Registro {
 
     @ManyToOne
     @JoinColumn(name = "sensor_id", nullable = false)
+    @JsonIgnore
     private Sensor sensor;
 }

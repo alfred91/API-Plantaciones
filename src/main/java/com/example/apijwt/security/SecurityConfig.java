@@ -62,8 +62,8 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(Customizer.withDefaults());
-                //.httpBasic(withDefaults());
+                .cors(Customizer.withDefaults())
+                .httpBasic(withDefaults());
 
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 

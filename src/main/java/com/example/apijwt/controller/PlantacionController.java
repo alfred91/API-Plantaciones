@@ -19,7 +19,7 @@ public class PlantacionController {
     public ResponseEntity<List<Plantacion>> findAll() {
         List<Plantacion> plantaciones = this.plantacionService.findAll();
         if (plantaciones.isEmpty())
-            return ResponseEntity.notFound().build();  //Devuelve 404 si no hay nada
+            return ResponseEntity.notFound().build();
 
         return ResponseEntity.ok( plantaciones );
     }

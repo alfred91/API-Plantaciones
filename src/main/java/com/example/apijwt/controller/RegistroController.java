@@ -15,9 +15,9 @@ public class RegistroController {
     @Autowired
     private RegistroService registroService;
 
-    @PostMapping
-    public ResponseEntity<Registro> createRegistro(@RequestBody Registro registro) {
-        Registro nuevoRegistro = registroService.save(registro);
+    @PostMapping("/sensores/{sensorId}")
+    public ResponseEntity<Registro> createRegistro(@PathVariable Long sensorId, @RequestBody Registro registro) {
+        Registro nuevoRegistro = registroService.save(registro, sensorId);
         return ResponseEntity.ok(nuevoRegistro);
     }
 

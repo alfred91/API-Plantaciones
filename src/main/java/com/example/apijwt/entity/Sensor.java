@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +27,6 @@ public class Sensor {
     @JoinColumn(name = "plantacion_id")
     private Plantacion plantacion;
 
-    @OneToMany(mappedBy = "sensor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "sensor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Registro> registros;
 }
