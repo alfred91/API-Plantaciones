@@ -1,6 +1,5 @@
 package com.example.apijwt.controller;
 
-import com.example.apijwt.dto.SensorDTO;
 import com.example.apijwt.entity.Plantacion;
 import com.example.apijwt.entity.Sensor;
 import com.example.apijwt.repository.PlantacionRepository;
@@ -23,18 +22,17 @@ public class SensorController {
     private PlantacionRepository plantacionRepository;
 
     @PostMapping("/sensores")
-    public ResponseEntity<Sensor> createSensor(@RequestBody SensorDTO sensorDTO) {
-        Plantacion plantacion = plantacionRepository.findById(sensorDTO.plantacionId())
-                .orElseThrow(() -> new EntityNotFoundException("Plantación no encontrada con id: " + sensorDTO.plantacionId()));
+    public ResponseEntity<Sensor> createSensor(@RequestBody Sensor sensor) {
+        // Antes de guardar, necesitas asegurarte de que la plantación exista.
+        Plantacion plantacion = plantacionRepository.findById(sensor.getPlantacion().getId())
+                .orElseThrow(() -> new EntityNotFoundException("Plantación no encontrada con id: " + sensor.getPlantacion().getId()));
 
-        Sensor sensor = new Sensor();
-        sensor.setUbicacion(sensorDTO.ubicacion());
-        sensor.setFechaInstalacion(sensorDTO.fechaInstalacion());
         sensor.setPlantacion(plantacion);
 
         Sensor nuevoSensor = sensorService.save(sensor);
         return ResponseEntity.ok(nuevoSensor);
     }
+
 
     @GetMapping("/sensores")
     public ResponseEntity<List<Sensor>> getAllSensors() {
