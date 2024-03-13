@@ -13,6 +13,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Plantacion {
 
     @Id
@@ -25,7 +26,7 @@ public class Plantacion {
 
     private Double longitud;
 
-    @OneToMany(mappedBy = "plantacion", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "plantacion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Sensor> sensores;
 }

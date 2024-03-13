@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Optional;
 
@@ -34,9 +35,8 @@ public class SensorCreationIntegrationTest {
 
         Sensor sensor = new Sensor();
         sensor.setUbicacion("Ubicación de prueba");
-        sensor.setFechaInstalacion(new Date());
+        sensor.setFechaInstalacion(LocalDateTime.now());
         sensor.setPlantacion(plantacion);
-
         Sensor savedSensor = sensorRepository.save(sensor);
         assertNotNull(savedSensor.getId(), "El sensor creado debe tener un ID");
 

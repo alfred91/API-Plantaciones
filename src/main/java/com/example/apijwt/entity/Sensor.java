@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -21,10 +22,11 @@ public class Sensor {
 
     private Long id;
     private String ubicacion;
-    private Date fechaInstalacion;
+    private LocalDateTime fechaInstalacion;
+
 
     @ManyToOne
-    @JoinColumn(name = "plantacion_id")
+    @JoinColumn(name = "plantacion_id", nullable = false)
     private Plantacion plantacion;
 
     @OneToMany(mappedBy = "sensor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

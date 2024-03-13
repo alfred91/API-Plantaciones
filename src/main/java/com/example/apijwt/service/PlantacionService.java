@@ -4,6 +4,7 @@ import com.example.apijwt.entity.Plantacion;
 import com.example.apijwt.repository.PlantacionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,4 +34,11 @@ public class PlantacionService {
     public void deleteById(Long id) {
         this.repository.deleteById(id);
     }
+
+    // Método para obtener una plantación específica por su ID, incluyendo sus sensores
+    public Optional<Plantacion> findByIdWithSensors(Long id) {
+        return this.repository.findById(id);
+    }
+
+
 }

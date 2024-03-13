@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -19,7 +21,7 @@ public class Registro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date fechaHora;
+    private LocalDateTime fechaHora;
 
     private Double temperatura;
 
